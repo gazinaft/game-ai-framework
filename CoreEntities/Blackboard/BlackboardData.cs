@@ -1,8 +1,7 @@
 namespace CoreEntities.Blackboard;
 
-public class BlackboardData
+public class BlackboardData<T>
 {
     public string Key { get; set; }
-    public Type Type { get; set; }
-    public Object Value { get; set; }
+    public T Value { get; set; }
 }

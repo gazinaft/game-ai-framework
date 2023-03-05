@@ -2,7 +2,12 @@ namespace DecisionMaking.FiniteStateMachine;
 
 public class EdgeChain
 {
-    public EdgeChain Next { get; set; }
+    private EdgeChain Next { get; }
+    
+    public EdgeChain(EdgeChain next)
+    {
+        Next = next;
+    }
 
     public virtual State ChooseNextState(List<Edge> edges)
     {

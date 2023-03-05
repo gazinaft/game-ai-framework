@@ -2,7 +2,7 @@ namespace DecisionMaking.FiniteStateMachine;
 
 public class StateLogic
 {
-    public Action Processed;
+    public event Action Processed;
 
     public Object Actor;
 

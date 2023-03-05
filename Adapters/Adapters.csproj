@@ -7,4 +7,7 @@
   <ItemGroup>
     <Content Include="./project.godot" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".godot" />
+  </ItemGroup>
 </Project>

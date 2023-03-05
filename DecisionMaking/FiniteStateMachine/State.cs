@@ -2,7 +2,7 @@ namespace DecisionMaking.FiniteStateMachine;
 
 public class State
 {
-    public Action processed;
+    public event Action Processed;
 
     private Executable _executable;
     private StateLogic _logic;
@@ -18,8 +18,7 @@ public class State
     public void Start(object actor)
     {
         _logic = _executable.Logic;
-        // TODO rewrite signal logic
-
+        _logic.Processed += () => Processed.Invoke();
         _logic.Actor = actor;
         _logic.Ready();
     }

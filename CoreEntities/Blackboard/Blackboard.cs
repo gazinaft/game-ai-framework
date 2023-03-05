@@ -2,5 +2,5 @@ namespace CoreEntities.Blackboard;
 
 public class Blackboard
 {
-    public List<BlackboardData> Entries = new List<BlackboardData>();
+    public List<BlackboardData<Object>> Entries = new();
 }
