@@ -48,7 +48,7 @@ public class ActionManager
         }
         else
         {
-            _active.Update();
+            _active.Update(delta);
         }
     }
 }

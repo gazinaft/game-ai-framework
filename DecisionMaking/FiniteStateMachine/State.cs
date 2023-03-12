@@ -23,6 +23,6 @@ public class State
 
     public void Update(float delta)
     {
-        _logic.Update();
+        _logic.Update(delta);
     }
 }

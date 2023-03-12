@@ -9,6 +9,6 @@ public abstract class AiAction
     public abstract bool Interrupt();
 
     public abstract void Start();
-    public abstract void Update();
+    public abstract void Update(float delta);
 
 }
