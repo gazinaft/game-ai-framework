@@ -29,6 +29,6 @@ public class Director
         //TODO rewrite signal logic
 
         currentState = nextState;
-        currentState.Start(actor);
+        //currentState.Start(actor);
     }
 }

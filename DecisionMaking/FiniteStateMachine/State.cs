@@ -3,7 +3,7 @@ namespace DecisionMaking.FiniteStateMachine;
 public class State
 {
     public event Action Processed;
-
+    
     private StateLogic _logic;
     
     
