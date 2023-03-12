@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeExecution", "CodeExecut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeExecution.Test", "CodeExecution.Test\CodeExecution.Test.csproj", "{8C5B3801-B8A1-4794-A93F-5AC8CB0CA222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DI", "DI\DI.csproj", "{A4C68966-5DAC-4662-ABF8-650FC1E2FB1C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 	Debug|Any CPU = Debug|Any CPU
@@ -49,11 +47,5 @@ Global
 		{8C5B3801-B8A1-4794-A93F-5AC8CB0CA222}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
 		{8C5B3801-B8A1-4794-A93F-5AC8CB0CA222}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
 		{8C5B3801-B8A1-4794-A93F-5AC8CB0CA222}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
-		{A4C68966-5DAC-4662-ABF8-650FC1E2FB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4C68966-5DAC-4662-ABF8-650FC1E2FB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4C68966-5DAC-4662-ABF8-650FC1E2FB1C}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4C68966-5DAC-4662-ABF8-650FC1E2FB1C}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
-		{A4C68966-5DAC-4662-ABF8-650FC1E2FB1C}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4C68966-5DAC-4662-ABF8-650FC1E2FB1C}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

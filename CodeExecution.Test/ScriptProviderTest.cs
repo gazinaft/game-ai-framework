@@ -7,15 +7,13 @@ using Xunit.Sdk;
 namespace CodeExecution.Test;
 
 public class ScriptProviderTest {
-    private readonly ITestOutputHelper _testOutputHelper;
     private IServiceProvider _serviceProvider;
     
     
     private class StateLogicOption {
         public int Value { get; } = 5;
     }
-
-
+    
     private class StateLogicTest : StateLogic {
         public StateLogicOption Option { get; }
 
@@ -26,9 +24,8 @@ public class ScriptProviderTest {
     }
 
 
-    public ScriptProviderTest(ITestOutputHelper testOutputHelper)
+    public ScriptProviderTest()
     {
-        _testOutputHelper = testOutputHelper;
 
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddSingleton<StateLogicOption>();
