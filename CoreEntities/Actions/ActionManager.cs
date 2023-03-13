@@ -16,7 +16,7 @@ public class ActionManager
         _queue.Add(action);
     }
 
-    public void Process(float delta)
+    public void Update(float delta)
     {
         var currentTimeMs = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
         var priorityCutoff = _active?.Priority ?? 0;
@@ -38,10 +38,9 @@ public class ActionManager
             _queue.RemoveAt(0);
             _active = newActive;
             _active.Start();
+            return;
         }
-        else
-        {
-            _active.Update(delta);
-        }
+        
+        _active.Update(delta);
     }
 }
