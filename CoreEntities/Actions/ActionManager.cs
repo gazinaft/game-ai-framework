@@ -18,28 +18,21 @@ public class ActionManager
 
     public void Process(float delta)
     {
-        if (_queue.Count == 0) return;
-        
         var currentTimeMs = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
         var priorityCutoff = _active?.Priority ?? 0;
 
         _queue.RemoveAll(x => x.ExpireTime < currentTimeMs);
         _queue.Sort((x, y) => x.Priority - y.Priority);
 
-        foreach (var action in _queue.ToArray())
+        var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt && a.Priority >= priorityCutoff);
+        if (actionToInterrupt is not null) 
         {
-            if (action.Priority < priorityCutoff)
-                break;
-
-            if (action.Interrupt())
-            {
-                _queue.Remove(action);
-                _active = action;
-                priorityCutoff = action.Priority;
-            }
+            _queue.Remove(actionToInterrupt);
+            _active = actionToInterrupt;
+            _active.Start();
         }
 
-        if (_active == null || _active.IsComplete())
+        if (_active == null || _active.IsComplete)
         {
             var newActive = _queue[0];
             _queue.RemoveAt(0);
