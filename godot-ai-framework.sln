@@ -10,6 +10,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeExecution", "CodeExecut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeExecution.Test", "CodeExecution.Test\CodeExecution.Test.csproj", "{8C5B3801-B8A1-4794-A93F-5AC8CB0CA222}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perception", "Perception\Perception.csproj", "{8569447F-80EA-41AD-9CFE-DEA6138F3F98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perception.Test", "Perception.Test\Perception.Test.csproj", "{2F067D5B-AEF1-484B-8110-4AB1E558A0EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direction", "Direction\Direction.csproj", "{1ADF89E6-898E-4401-9634-E5718B611E15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 	Debug|Any CPU = Debug|Any CPU

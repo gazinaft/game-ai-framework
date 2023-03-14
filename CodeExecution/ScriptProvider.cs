@@ -9,7 +9,6 @@ public class ScriptProvider {
     public ScriptProvider(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
-
     }
 
     public T GetClassByNameExtending<T>(string name, Assembly assembly)

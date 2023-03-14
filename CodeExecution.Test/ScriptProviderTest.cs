@@ -1,14 +1,10 @@
-using DecisionMaking.FiniteStateMachine;
+using DecisionMaking.FiniteStateMachine.States;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Xunit.Abstractions;
-using Xunit.Sdk;
 
 namespace CodeExecution.Test;
 
 public class ScriptProviderTest {
     private IServiceProvider _serviceProvider;
-    
     
     private class StateLogicOption {
         public int Value { get; } = 5;
@@ -20,6 +16,14 @@ public class ScriptProviderTest {
         public StateLogicTest(StateLogicOption option)
         {
             Option = option;
+        }
+        public override void Start()
+        {
+            
+        }
+        public override void Update(float delta)
+        {
+            
         }
     }
 

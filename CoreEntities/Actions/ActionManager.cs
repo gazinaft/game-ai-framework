@@ -4,6 +4,9 @@ public class ActionManager
 {
     private readonly List<AiAction> _queue;
     private AiAction? _active;
+    private int _priorityCutOff;
+
+    public event Action? QueueEmpty;
 
     public ActionManager()
     {
@@ -18,29 +21,51 @@ public class ActionManager
 
     public void Update(float delta)
     {
-        var currentTimeMs = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-        var priorityCutoff = _active?.Priority ?? 0;
-
-        _queue.RemoveAll(x => x.ExpireTime < currentTimeMs);
-        _queue.Sort((x, y) => x.Priority - y.Priority);
-
-        var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt && a.Priority >= priorityCutoff);
-        if (actionToInterrupt is not null) 
+        if (_queue.Count == 0)
         {
-            _queue.Remove(actionToInterrupt);
-            _active = actionToInterrupt;
-            _active.Start();
-        }
-
-        if (_active == null || _active.IsComplete)
-        {
-            var newActive = _queue[0];
-            _queue.RemoveAt(0);
-            _active = newActive;
-            _active.Start();
+            QueueEmpty?.Invoke();
             return;
         }
         
-        _active.Update(delta);
+        TrimQueue();
+
+        UpdateActive();
+
+        _active!.Update(delta);
+        
+        if (_active.IsComplete)
+            _active = null;
+    }
+
+    private void TrimQueue()
+    {
+        var currentTimeMs = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+        _priorityCutOff = _active?.Priority ?? 0;
+
+        _queue.RemoveAll(x => x.ExpireTime < currentTimeMs);
+        _queue.Sort((x, y) => x.Priority - y.Priority);
+    }
+    
+    private void UpdateActive()
+    {
+        if (_active is null)
+        {
+            SetActive(_queue[0]);
+        }
+        else
+        {
+            var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt && a.Priority >= _priorityCutOff);
+            if (actionToInterrupt is not null)
+            {
+                SetActive(actionToInterrupt);
+            }
+        }
+    }
+
+    private void SetActive(AiAction action)
+    {
+        _queue.Remove(action);
+        _active = action;
+        _active.Start();
     }
 }
