@@ -1,3 +1,5 @@
+using DecisionMaking.FiniteStateMachine.Transitions;
+
 namespace DecisionMaking.FiniteStateMachine.States;
 
 public class State

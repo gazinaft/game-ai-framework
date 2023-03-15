@@ -1,6 +1,6 @@
 using DecisionMaking.FiniteStateMachine.States;
 
-namespace DecisionMaking.FiniteStateMachine;
+namespace DecisionMaking.FiniteStateMachine.Transitions;
 
 public class Transition
 {

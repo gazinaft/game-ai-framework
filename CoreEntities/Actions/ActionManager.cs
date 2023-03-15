@@ -29,7 +29,7 @@ public class ActionManager
         
         TrimQueue();
 
-        UpdateActive();
+        ReconsiderActive();
 
         _active!.Update(delta);
         
@@ -46,7 +46,7 @@ public class ActionManager
         _queue.Sort((x, y) => x.Priority - y.Priority);
     }
     
-    private void UpdateActive()
+    private void ReconsiderActive()
     {
         if (_active is null)
         {
