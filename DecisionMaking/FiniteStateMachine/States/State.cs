@@ -8,6 +8,12 @@ public class State
 
     private List<Transition> _edges = new List<Transition>();
 
+    public State AddTransition(Transition tr)
+    {
+        _edges.Add(tr);
+        return this;
+    }
+
     public State(StateLogic logic)
     {
         Logic = logic;

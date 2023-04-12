@@ -4,11 +4,10 @@ namespace CoreEntities.Blackboard;
 
 public class Blackboard
 {
-    private Dictionary<string, BlackboardData<object>?> _entries = new();
-
-    public void Set<T>(string id, BlackboardData<T> data)
+    private Dictionary<string, BlackboardData<object?>> _entries = new();
+    public void Set(string id, object? data)
     {
-        _entries.Add(id, data as BlackboardData<object>);
+        _entries[id] = new BlackboardData<object?> { Value = data };
     }
     
     public BlackboardData<T>? Get<T>(string id)

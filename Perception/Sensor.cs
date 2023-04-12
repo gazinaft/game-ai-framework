@@ -3,10 +3,13 @@ using CoreEntities.Blackboard;
 namespace Perception; 
 
 public abstract class Sensor {
-    protected Sensor(Blackboard blackboard)
+    protected Sensor(Type type, string id)
     {
-        
+        Type = type;
+        Id = id;
     }
-    
-    public abstract void Sense();
+
+    public Type Type { get; }
+    public string Id { get; }
+    public abstract object? Sense();
 }

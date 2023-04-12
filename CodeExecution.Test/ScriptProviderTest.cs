@@ -13,7 +13,7 @@ public class ScriptProviderTest {
     private class StateLogicTest : StateLogic {
         public StateLogicOption Option { get; }
 
-        public StateLogicTest(StateLogicOption option)
+        public StateLogicTest(StateLogicOption option) : base(1, 0)
         {
             Option = option;
         }
