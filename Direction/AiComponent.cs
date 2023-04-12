@@ -19,7 +19,7 @@ public class AiComponent {
         _blackboard = bb;
         _sensors = sensors;
         _actionManager.ScheduleAction(decisionMaker.GetNextAction());
-        // _actionManager.QueueEmpty += () => _actionManager.ScheduleAction(decisionMaker.GetNextAction());
+        _actionManager.QueueEmpty += () => _actionManager.ScheduleAction(decisionMaker.GetNextAction());
     }
 
     private void UpdateSensors()

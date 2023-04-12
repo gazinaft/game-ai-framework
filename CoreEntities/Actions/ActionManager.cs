@@ -21,12 +21,6 @@ public class ActionManager
 
     public void Update(float delta)
     {
-        if (_queue.Count == 0)
-        {
-            QueueEmpty?.Invoke();
-            return;
-        }
-        
         // TrimQueue();
 
         ReconsiderActive();
@@ -35,6 +29,13 @@ public class ActionManager
         
         if (_active.IsComplete)
             _active = null;
+
+        if (_queue.Count != 0)
+        {
+            return;
+        }
+        
+        QueueEmpty?.Invoke();
     }
 
     private void TrimQueue()
