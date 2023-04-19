@@ -4,15 +4,20 @@ namespace IntegrationTest;
 
 public class IdleLogic: StateLogic
 {
-    private float idleTime;
+    private float _idleTime;
     public override void Start()
     {
-        idleTime = 0;
+        _idleTime = 0;
+        Console.WriteLine("Starting idle");
     }
 
     public override void Update(float delta)
     {
-        idleTime += delta;
-        Console.WriteLine("Idling for " + idleTime + "ms");
+        _idleTime += delta;
+        Console.WriteLine("Idling for " + _idleTime + " ms");
+    }
+
+    public IdleLogic(int priority, long expireTime) : base(priority, expireTime)
+    {
     }
 }

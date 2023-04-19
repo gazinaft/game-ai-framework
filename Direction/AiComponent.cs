@@ -9,8 +9,8 @@ namespace Direction;
 public class AiComponent {
     private readonly ActionManager _actionManager;
     private readonly DecisionMaker _decisionMaker;
-    private List<Sensor> _sensors;
-    private Blackboard _blackboard;
+    private readonly List<Sensor> _sensors;
+    private readonly Blackboard _blackboard;
 
     public AiComponent(ActionManager actionManager, DecisionMaker decisionMaker, Blackboard bb, List<Sensor> sensors)
     {
@@ -18,8 +18,14 @@ public class AiComponent {
         _decisionMaker = decisionMaker;
         _blackboard = bb;
         _sensors = sensors;
-        _actionManager.ScheduleAction(decisionMaker.GetNextAction());
-        _actionManager.QueueEmpty += () => _actionManager.ScheduleAction(decisionMaker.GetNextAction());
+        
+        _actionManager.ActionComplete += action =>
+        {
+                List<AiAction> actions = decisionMaker
+                    .OnActionComplete(action)
+                    .Where(x => x != null) as List<AiAction> ?? new List<AiAction>();
+                _actionManager.ScheduleActions(actions);
+        };
     }
 
     private void UpdateSensors()
@@ -34,13 +40,11 @@ public class AiComponent {
     {
         UpdateSensors();
         
+        var interruptions = _decisionMaker.Update(delta);
+
+        _actionManager.ScheduleActions(interruptions);
+        
         _actionManager.Update(delta);
         
-        var interruption = _decisionMaker.SearchForInterruptions();
-
-        if (interruption is not null)
-        {
-            _actionManager.ScheduleAction(interruption);
-        }
     }
 }

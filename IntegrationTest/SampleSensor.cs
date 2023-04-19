@@ -12,8 +12,8 @@ public class SampleSensor : Sensor
         _global = global;
     }
 
-    public override object? Sense()
+    public override ActorStub? Sense()
     {
-         return _global.Get<ActorStub>("Enemy");
+        return _global.Get<ActorStub>("Enemy")?.Value;
     }
 }

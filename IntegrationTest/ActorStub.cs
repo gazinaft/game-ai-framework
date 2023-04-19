@@ -21,9 +21,9 @@ public class ActorStub
         
         var bb = new Blackboard();
 
-        var idleLogic = new IdleLogic();
-        var rageLogic = new RageLogic();
-        var patrollingLogic = new PatrollingLogic(25f);
+        var idleLogic = new IdleLogic(1, 20);
+        var rageLogic = new RageLogic(5, 25);
+        var patrollingLogic = new PatrollingLogic(25f, 5, 25);
         var toRageLogic = new ToRageLogic(bb);
         var fromRageLogic = new FromRageLogic(bb);
 

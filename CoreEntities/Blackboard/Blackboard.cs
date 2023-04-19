@@ -9,10 +9,21 @@ public class Blackboard
     {
         _entries[id] = new BlackboardData<object?> { Value = data };
     }
-    
-    public BlackboardData<T>? Get<T>(string id)
+
+    public BlackboardData<object?> GetUntyped(string id)
+    {
+        return _entries[id];
+    }
+
+    public BlackboardData<T>? Get<T>(string id) where T : class
     {
         if (!_entries.ContainsKey(id)) return null;
-        return _entries[id] as BlackboardData<T>;
+        var bbData = _entries[id];
+        return new BlackboardData<T>
+        {
+            Key = bbData.Key,
+            Timestamp = bbData.Timestamp,
+            Value = (bbData.Value as T)!
+        };
     }
 }

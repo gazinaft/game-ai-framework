@@ -6,7 +6,7 @@ public class PatrollingLogic : StateLogic
 {
     private readonly float _patrolTime;
     private float _currentPatrolTime;
-    public PatrollingLogic(float patrolTime)
+    public PatrollingLogic(float patrolTime, int priority, long expireTime) : base(priority, expireTime)
     {
         _patrolTime = patrolTime;
     }

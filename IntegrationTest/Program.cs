@@ -15,18 +15,18 @@ static class Program
 
         actor.GlobalBb = globalBb;
         actor.Start();
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 100; i++)
         {
-            actor.Update(Stable60FpsInterval);
-            if (i % 500 == 0)
+            if (i % 10 == 0)
             {
-                globalBb.Set("enemy", new ActorStub());
+                globalBb.Set("Enemy", new ActorStub());
             }
 
-            if (i % 520 == 0)
+            if (i % 13 == 0)
             {
-                globalBb.Set("enemy", null);
+                globalBb.Set("Enemy", null);
             }
+            actor.Update(Stable60FpsInterval);
         }
     }
 }

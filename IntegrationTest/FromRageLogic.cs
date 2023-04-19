@@ -6,12 +6,12 @@ namespace IntegrationTest;
 
 public class FromRageLogic : TransitionLogic
 {
-    private Blackboard bb;
+    private Blackboard _bb;
     public FromRageLogic(Blackboard bb)
     {
-        this.bb = bb;
+        _bb = bb;
     }
 
-    public override bool CanTraverse => bb.Get<ActorStub>("Enemy") == null;
+    public override bool CanTraverse => _bb.Get<ActorStub>("Enemy")?.Value == null;
     
 }

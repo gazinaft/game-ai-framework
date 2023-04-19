@@ -7,6 +7,7 @@ public class ActionManager
     private int _priorityCutOff;
 
     public event Action? QueueEmpty;
+    public event Action<AiAction>? ActionComplete;
 
     public ActionManager()
     {
@@ -14,36 +15,45 @@ public class ActionManager
         _active = null;
     }
 
-    public void ScheduleAction(AiAction action)
+    public void ScheduleActions(List<AiAction> actions)
     {
-        _queue.Add(action);
+        foreach (var action in actions)
+        {
+            _queue.Add(action);
+            action.QueueUp();
+        }
     }
 
     public void Update(float delta)
     {
-        // TrimQueue();
+        TrimQueue(delta);
 
         ReconsiderActive();
 
         _active!.Update(delta);
         
-        if (_active.IsComplete)
-            _active = null;
-
-        if (_queue.Count != 0)
+        if (_queue.Count == 0)
         {
-            return;
+            QueueEmpty?.Invoke();
         }
         
-        QueueEmpty?.Invoke();
+        if (_active.IsComplete)
+        {
+            ActionComplete?.Invoke(_active);
+            _active = null;
+        }
+
     }
 
-    private void TrimQueue()
+    private void TrimQueue(float delta)
     {
-        var currentTimeMs = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+        foreach (var aiAction in _queue)
+        {
+            aiAction.ExpireTime -= delta;
+        }
         _priorityCutOff = _active?.Priority ?? 0;
 
-        _queue.RemoveAll(x => x.ExpireTime < currentTimeMs);
+        _queue.RemoveAll(x => x.ExpireTime < 0);
         _queue.Sort((x, y) => x.Priority - y.Priority);
     }
     
@@ -56,6 +66,7 @@ public class ActionManager
         else
         {
             var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt && a.Priority >= _priorityCutOff);
+            if (actionToInterrupt == _active) return;
             if (actionToInterrupt is not null)
             {
                 SetActive(actionToInterrupt);

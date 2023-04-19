@@ -3,12 +3,18 @@ namespace CoreEntities.Actions;
 public abstract class AiAction
 {
     public int Priority { get; protected set;}
-    public long ExpireTime { get; protected set;}
+    protected float StartExpireTime { get; }
+    public float ExpireTime { get; set; } 
 
-    protected AiAction(int priority, long expireTime)
+    protected AiAction(int priority, float expireTime)
     {
         Priority = priority;
-        ExpireTime = expireTime;
+        StartExpireTime = expireTime;
+    }
+
+    public void QueueUp()
+    {
+        ExpireTime = StartExpireTime;
     }
     
     public bool IsComplete { get; protected set; }
