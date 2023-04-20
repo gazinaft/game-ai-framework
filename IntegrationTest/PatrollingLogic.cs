@@ -13,6 +13,7 @@ public class PatrollingLogic : StateLogic
     
     public override void Start()
     {
+        IsComplete = false;
         _currentPatrolTime = 0;
     }
 
