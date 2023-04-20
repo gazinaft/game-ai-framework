@@ -1,7 +1,7 @@
 using CoreEntities.Blackboard;
 using Perception;
 
-namespace IntegrationTest;
+namespace Framework.Test;
 
 public class SampleSensor : Sensor
 {

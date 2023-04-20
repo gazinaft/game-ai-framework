@@ -4,9 +4,11 @@ using DecisionMaking.FiniteStateMachine.StateMachine;
 using DecisionMaking.FiniteStateMachine.States;
 using DecisionMaking.FiniteStateMachine.Transitions;
 using Direction;
+using Framework.Test.StateLogics;
+using Framework.Test.Transitions;
 using Perception;
 
-namespace IntegrationTest;
+namespace Framework.Test;
 
 public class ActorStub
 {

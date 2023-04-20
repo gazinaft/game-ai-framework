@@ -13,8 +13,4 @@
       <ProjectReference Include="..\Direction\Direction.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Sensors\" />
-    </ItemGroup>
-
 </Project>

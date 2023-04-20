@@ -1,8 +1,7 @@
 using CoreEntities.Blackboard;
-using DecisionMaking.FiniteStateMachine.States;
 using DecisionMaking.FiniteStateMachine.Transitions;
 
-namespace IntegrationTest;
+namespace Framework.Test.Transitions;
 
 public class FromRageLogic : TransitionLogic
 {

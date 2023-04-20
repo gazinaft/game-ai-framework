@@ -1,13 +1,13 @@
 ﻿using CoreEntities.Blackboard;
 
-namespace IntegrationTest;
+namespace Framework.Test;
 
 static class Program
 {
     // 1000 ms/60fps = 17ms timeout
     private const int Stable60FpsInterval = 17;
     
-    static void Main(string[] args)
+    static void Start(string[] args)
     {
 
         var actor = new ActorStub();

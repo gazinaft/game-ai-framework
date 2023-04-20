@@ -1,6 +1,6 @@
 using DecisionMaking.FiniteStateMachine.States;
 
-namespace IntegrationTest;
+namespace Framework.Test.StateLogics;
 
 public class IdleLogic: StateLogic
 {
