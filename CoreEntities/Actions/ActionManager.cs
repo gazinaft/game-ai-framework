@@ -6,8 +6,7 @@ public class ActionManager
     private AiAction? _active;
     private int _priorityCutOff;
 
-    public event Action? QueueEmpty;
-    public event Action<AiAction>? ActionComplete;
+    public event Action? ActionComplete;
 
     public ActionManager()
     {
@@ -27,22 +26,14 @@ public class ActionManager
     public void Update(float delta)
     {
         TrimQueue(delta);
-
         ReconsiderActive();
-
         _active!.Update(delta);
-        
-        if (_queue.Count == 0)
-        {
-            QueueEmpty?.Invoke();
-        }
-        
+
         if (_active.IsComplete)
         {
-            ActionComplete?.Invoke(_active);
+            ActionComplete?.Invoke();
             _active = null;
         }
-
     }
 
     private void TrimQueue(float delta)
@@ -54,7 +45,8 @@ public class ActionManager
         _priorityCutOff = _active?.Priority ?? 0;
 
         _queue.RemoveAll(x => x.ExpireTime < 0);
-        _queue.Sort((x, y) => x.Priority - y.Priority);
+        // highest(biggest) priority must be first
+        _queue.Sort((x, y) => y.Priority - x.Priority);
     }
     
     private void ReconsiderActive()
@@ -66,11 +58,8 @@ public class ActionManager
         else
         {
             var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt && a.Priority >= _priorityCutOff);
-            if (actionToInterrupt == _active) return;
-            if (actionToInterrupt is not null)
-            {
-                SetActive(actionToInterrupt);
-            }
+            if (actionToInterrupt is null || actionToInterrupt == _active) return;
+            SetActive(actionToInterrupt);
         }
     }
 

@@ -14,13 +14,14 @@ public class Graph : DecisionMaker {
         _root = root;
     }
 
-    public override List<AiAction?> OnActionComplete(AiAction action)
+    public override List<AiAction> OnActionComplete()
     {
-
         var nextState = _currentState?.GetNextState();
-        _currentState = nextState ?? _currentState;
-
-        return new List<AiAction?> { nextState?.Logic };
+     
+        if (nextState?.Logic == null) return new List<AiAction>();
+        
+        _currentState = nextState;
+        return new List<AiAction> { nextState.Logic };
     }
 
     public override List<AiAction> Update(float delta)
@@ -33,9 +34,10 @@ public class Graph : DecisionMaker {
         }
         
         var nextState = _currentState.GetInterruption();
-        _currentState = nextState ?? _currentState;
-
-        nextState?.Logic.SetInterrupted();
-        return new List<AiAction> { nextState?.Logic ?? _currentState.Logic };
+        if (nextState?.Logic == null) return new List<AiAction>();
+        
+        _currentState = nextState;
+        nextState.Logic.SetInterrupted();
+        return new List<AiAction> { nextState.Logic  };
     }
 }

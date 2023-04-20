@@ -19,13 +19,9 @@ public class AiComponent {
         _blackboard = bb;
         _sensors = sensors;
         
-        _actionManager.ActionComplete += action =>
-        {
-                List<AiAction> actions = decisionMaker
-                    .OnActionComplete(action)
-                    .Where(x => x != null) as List<AiAction> ?? new List<AiAction>();
-                _actionManager.ScheduleActions(actions);
-        };
+        _actionManager.ActionComplete += () =>
+            _actionManager.ScheduleActions(decisionMaker.OnActionComplete());
+        
     }
 
     private void UpdateSensors()
@@ -38,13 +34,12 @@ public class AiComponent {
     
     public void Update(float delta)
     {
+        _blackboard.Update(delta);
         UpdateSensors();
         
         var interruptions = _decisionMaker.Update(delta);
 
         _actionManager.ScheduleActions(interruptions);
-        
         _actionManager.Update(delta);
-        
     }
 }
