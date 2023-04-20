@@ -17,16 +17,20 @@ static class Program
         actor.Start();
         for (int i = 0; i < 100; i++)
         {
+            Console.Write("i = " + i + " | ");
             if (i % 10 == 0)
             {
                 globalBb.Set("Enemy", new ActorStub());
+                Console.Write("Set enemy | ");
             }
 
             if (i % 13 == 0)
             {
                 globalBb.Set("Enemy", null);
+                Console.Write("enemy null | ");
             }
             actor.Update(Stable60FpsInterval);
+            
         }
     }
 }
