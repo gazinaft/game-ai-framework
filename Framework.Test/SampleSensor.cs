@@ -1,6 +1,3 @@
-using CoreEntities.Blackboard;
-using Perception;
-
 namespace Framework.Test;
 
 public class SampleSensor : Sensor
@@ -14,6 +11,6 @@ public class SampleSensor : Sensor
 
     public override ActorStub? Sense()
     {
-        return _global.Get<ActorStub>("Enemy")?.Value;
+        return _global.Get<ActorStub>("Enemy").Value;
     }
 }

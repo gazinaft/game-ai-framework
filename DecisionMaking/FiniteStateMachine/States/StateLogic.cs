@@ -9,7 +9,7 @@ public abstract class StateLogic : AiAction
         Interrupt = true;
     }
 
-    protected StateLogic(int priority, long expireTime) : base(priority, expireTime)
+    protected StateLogic(int priority, float expireTime) : base(priority, expireTime)
     {
     }
 }

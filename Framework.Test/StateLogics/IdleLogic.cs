@@ -1,5 +1,3 @@
-using DecisionMaking.FiniteStateMachine.States;
-
 namespace Framework.Test.StateLogics;
 
 public class IdleLogic: StateLogic
@@ -17,7 +15,7 @@ public class IdleLogic: StateLogic
         Console.WriteLine("Idling for " + _idleTime + " ms");
     }
 
-    public IdleLogic(int priority, long expireTime) : base(priority, expireTime)
+    public IdleLogic(int priority, float expireTime) : base(priority, expireTime)
     {
     }
 }

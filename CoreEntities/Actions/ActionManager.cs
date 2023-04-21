@@ -3,7 +3,7 @@ namespace CoreEntities.Actions;
 public class ActionManager
 {
     private readonly List<AiAction> _queue;
-    private AiAction? _active;
+    public AiAction? Active { get; private set; }
     private int _priorityCutOff;
 
     public event Action? ActionComplete;
@@ -11,7 +11,7 @@ public class ActionManager
     public ActionManager()
     {
         _queue = new List<AiAction>();
-        _active = null;
+        Active = null;
     }
 
     public void ScheduleActions(List<AiAction> actions)
@@ -27,12 +27,12 @@ public class ActionManager
     {
         TrimQueue(delta);
         ReconsiderActive();
-        _active!.Update(delta);
+        Active!.Update(delta);
 
-        if (_active.IsComplete)
+        if (Active.IsComplete)
         {
             ActionComplete?.Invoke();
-            _active = null;
+            Active = null;
         }
     }
 
@@ -42,7 +42,7 @@ public class ActionManager
         {
             aiAction.ExpireTime -= delta;
         }
-        _priorityCutOff = _active?.Priority ?? 0;
+        _priorityCutOff = Active?.Priority ?? 0;
 
         _queue.RemoveAll(x => x.ExpireTime < 0);
         // highest(biggest) priority must be first
@@ -51,14 +51,14 @@ public class ActionManager
     
     private void ReconsiderActive()
     {
-        if (_active is null)
+        if (Active is null)
         {
             SetActive(_queue[0]);
         }
         else
         {
             var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt && a.Priority >= _priorityCutOff);
-            if (actionToInterrupt is null || actionToInterrupt == _active) return;
+            if (actionToInterrupt is null || actionToInterrupt == Active) return;
             SetActive(actionToInterrupt);
         }
     }
@@ -66,7 +66,7 @@ public class ActionManager
     private void SetActive(AiAction action)
     {
         _queue.Remove(action);
-        _active = action;
-        _active.Start();
+        Active = action;
+        Active.Start();
     }
 }

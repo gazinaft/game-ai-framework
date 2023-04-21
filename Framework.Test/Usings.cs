@@ -1,1 +1,10 @@
 global using Xunit;
+global using CoreEntities.Actions;
+global using CoreEntities.Blackboard;
+global using DecisionMaking.FiniteStateMachine.StateMachine;
+global using DecisionMaking.FiniteStateMachine.States;
+global using DecisionMaking.FiniteStateMachine.Transitions;
+global using Direction;
+global using Framework.Test.StateLogics;
+global using Framework.Test.Transitions;
+global using Perception;

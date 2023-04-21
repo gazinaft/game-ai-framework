@@ -1,12 +1,10 @@
-using DecisionMaking.FiniteStateMachine.States;
-
 namespace Framework.Test.StateLogics;
 
 public class PatrollingLogic : StateLogic
 {
     private readonly float _patrolTime;
     private float _currentPatrolTime;
-    public PatrollingLogic(float patrolTime, int priority, long expireTime) : base(priority, expireTime)
+    public PatrollingLogic(float patrolTime, int priority, float expireTime) : base(priority, expireTime)
     {
         _patrolTime = patrolTime;
     }

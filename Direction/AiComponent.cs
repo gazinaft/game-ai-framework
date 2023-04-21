@@ -11,6 +11,8 @@ public class AiComponent {
     private readonly List<Sensor> _sensors;
     private readonly Blackboard _blackboard;
 
+    public AiAction? CurrentAction => _actionManager.Active;
+
     public AiComponent(ActionManager actionManager, DecisionMaker decisionMaker, Blackboard bb, List<Sensor> sensors)
     {
         _actionManager = actionManager;
@@ -22,7 +24,7 @@ public class AiComponent {
             _actionManager.ScheduleActions(decisionMaker.OnActionComplete());
         
     }
-
+    
     private void UpdateSensors()
     {
         foreach (var sensor in _sensors)
@@ -41,4 +43,5 @@ public class AiComponent {
         _actionManager.ScheduleActions(interruptions);
         _actionManager.Update(delta);
     }
+
 }

@@ -1,5 +1,3 @@
-using DecisionMaking.FiniteStateMachine.States;
-
 namespace Framework.Test.StateLogics;
 
 public class RageLogic : StateLogic
@@ -19,7 +17,7 @@ public class RageLogic : StateLogic
     }
 
 
-    public RageLogic(int priority, long expireTime) : base(priority, expireTime)
+    public RageLogic(int priority, float expireTime) : base(priority, expireTime)
     {
     }
 }

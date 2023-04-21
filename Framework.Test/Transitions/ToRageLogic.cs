@@ -1,6 +1,3 @@
-using CoreEntities.Blackboard;
-using DecisionMaking.FiniteStateMachine.Transitions;
-
 namespace Framework.Test.Transitions;
 
 public class ToRageLogic : TransitionLogic
