@@ -1,4 +1,3 @@
-using Xunit.Abstractions;
 
 namespace Framework.Test;
 
@@ -21,7 +20,7 @@ public class IntegrationTest
 
     private void Init()
     {
-        actor = new ActorStub(PatrolTime, ExpireTime);
+        actor = new ActorStub(_testOutputHelper, PatrolTime, ExpireTime);
         globalBb = new Blackboard();
 
         actor.GlobalBb = globalBb;

@@ -3,21 +3,23 @@ namespace Framework.Test.StateLogics;
 public class RageLogic : StateLogic
 {
     private float _ragetime;
+    private ITestOutputHelper _testOutputHelper;
     
     public override void Start()
     {
         _ragetime = 0;
-        Console.WriteLine("Starting rage");
+        _testOutputHelper.WriteLine("Starting rage");
     }
 
     public override void Update(float delta)
     {
         _ragetime += delta;
-        Console.WriteLine("raging for " + _ragetime);
+        _testOutputHelper.WriteLine("raging for " + _ragetime);
     }
 
 
-    public RageLogic(int priority, float expireTime) : base(priority, expireTime)
+    public RageLogic(int priority, float expireTime, ITestOutputHelper testOutputHelper) : base(priority, expireTime)
     {
+        _testOutputHelper = testOutputHelper;
     }
 }

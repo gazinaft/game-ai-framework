@@ -1,6 +1,4 @@
-﻿using Xunit.Abstractions;
-
-namespace Framework.Test;
+﻿namespace Framework.Test;
 
 public static class Program
 {
@@ -11,7 +9,7 @@ public static class Program
     public static void Run(string[] args)
     {
     
-        var actor = new ActorStub();
+        var actor = new ActorStub(TestOutputHelper);
         var globalBb = new Blackboard();
     
         actor.GlobalBb = globalBb;
