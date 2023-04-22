@@ -19,8 +19,17 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them.
 
 ```
-Examples
+Dotnet 6.0+
 ```
+
+## Project structure
+
+- `CodeExecution` - build AI from GUI using reflection
+- `CodeExecution.Test` - unit tests for CodeExecution
+- `CoreEntities` - core entities of AI architecture
+- `DecisionMaking` - implementations of decision making algorithms for the framework. Currently only FSM implemented
+- `Direction` - facade for all other AI components which is used directly in user's code
+- `Framework.Test` - integration test for the framework to test its components working together and a demo of usage
 
 ## Deployment
 
