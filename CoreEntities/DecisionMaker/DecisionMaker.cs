@@ -3,7 +3,10 @@ using CoreEntities.Actions;
 namespace CoreEntities.DecisionMaker; 
 
 public abstract class DecisionMaker {
-    public abstract List<AiAction> OnActionComplete();
+    public abstract AiAction RequestAction();
+    public virtual void OnActionSet(AiAction setAction) {}
+    public virtual void OnActionInterrupted(AiAction interruptAction) {}
+    public virtual void OnActionComplete(AiAction completedAction) {}
 
-    public abstract List<AiAction> Update(float delta);
+    public abstract AiAction? Update();
 }

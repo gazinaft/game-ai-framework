@@ -2,8 +2,9 @@ using Xunit.Abstractions;
 
 namespace Framework.Test.StateLogics;
 
-public class IdleLogic: StateLogic
-{
+public class IdleLogic: StateLogic {
+    public override int Priority { get; } = 1;
+    
     private float _idleTime;
     private ITestOutputHelper _testOutputHelper;
     public override void Start()
@@ -12,13 +13,13 @@ public class IdleLogic: StateLogic
         _testOutputHelper.WriteLine("Starting idle");
     }
 
-    public override void Update(float delta)
+    public override async Task Update(float delta)
     {
         _idleTime += delta;
         _testOutputHelper.WriteLine("Idling for " + _idleTime + " ms");
     }
 
-    public IdleLogic(int priority, float expireTime, ITestOutputHelper testOutputHelper) : base(priority, expireTime)
+    public IdleLogic(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
     }

@@ -1,12 +1,14 @@
 namespace CoreEntities.Actions;
 
-public class ActionManager
-{
+public class ActionManager {
     private readonly List<AiAction> _queue;
     public AiAction? Active { get; private set; }
     private int _priorityCutOff;
 
-    public event Action? ActionComplete;
+    public event Action QueueEmpty;
+    public event Action<AiAction> ActionComplete;
+    public event Action<AiAction> ActionSet;
+    public event Action<AiAction> ActionInterrupted;
 
     public ActionManager()
     {
@@ -14,24 +16,24 @@ public class ActionManager
         Active = null;
     }
 
-    public void ScheduleActions(List<AiAction> actions)
+    public void ScheduleAction(AiAction action)
     {
-        foreach (var action in actions)
-        {
-            _queue.Add(action);
-            action.QueueUp();
-        }
+        _queue.Add(action);
+        action.QueueUp();
     }
 
-    public void Update(float delta)
+    public async Task Update(float delta)
     {
+        if (_queue.Count == 0 && Active == null)
+            QueueEmpty?.Invoke();
+        
         TrimQueue(delta);
         ReconsiderActive();
-        Active!.Update(delta);
-
+        await Active!.Update(delta);
+        
         if (Active.IsComplete)
         {
-            ActionComplete?.Invoke();
+            ActionComplete?.Invoke(Active);
             Active = null;
         }
     }
@@ -48,7 +50,7 @@ public class ActionManager
         // highest(biggest) priority must be first
         _queue.Sort((x, y) => y.Priority - x.Priority);
     }
-    
+
     private void ReconsiderActive()
     {
         if (Active is null)
@@ -57,8 +59,10 @@ public class ActionManager
         }
         else
         {
-            var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt && a.Priority >= _priorityCutOff);
+            var actionToInterrupt = _queue.FirstOrDefault(a => a.Interrupt);
             if (actionToInterrupt is null || actionToInterrupt == Active) return;
+            
+            ActionInterrupted?.Invoke(actionToInterrupt);
             SetActive(actionToInterrupt);
         }
     }
@@ -68,5 +72,6 @@ public class ActionManager
         _queue.Remove(action);
         Active = action;
         Active.Start();
+        ActionSet?.Invoke(Active);
     }
 }

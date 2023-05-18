@@ -13,7 +13,7 @@ public class ScriptProviderTest {
     private class StateLogicTest : StateLogic {
         public StateLogicOption Option { get; }
 
-        public StateLogicTest(StateLogicOption option) : base(1, 0)
+        public StateLogicTest(StateLogicOption option)
         {
             Option = option;
         }
@@ -21,7 +21,7 @@ public class ScriptProviderTest {
         {
             
         }
-        public override void Update(float delta)
+        public override async Task Update(float delta)
         {
             
         }

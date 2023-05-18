@@ -1,13 +1,13 @@
+using CoreEntities.Blackboard;
+
 namespace Perception; 
 
 public abstract class Sensor {
-    protected Sensor(Type type, string id)
+    protected readonly Blackboard _blackboard;
+    protected Sensor(Blackboard blackboard)
     {
-        Type = type;
-        Id = id;
-    }
+        _blackboard = blackboard;
 
-    public Type Type { get; }
-    public string Id { get; }
-    public abstract object? Sense();
+    }
+    public abstract void Sense();
 }

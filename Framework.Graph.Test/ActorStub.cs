@@ -14,19 +14,16 @@ public class ActorStub
         _patrolTime = patrolTime;
         _expireTime = expireTime;
     }
-    
-    // later will be only in AIComponent and update through sensors in the component
-    public Blackboard GlobalBb;
-    
+
     public void Start()
     {
         #region [ Ai Construction ]
         
         var bb = new Blackboard();
 
-        var idleLogic = new IdleLogic(1, _expireTime, _testOutputHelper);
-        var rageLogic = new RageLogic(5, _expireTime, _testOutputHelper);
-        var patrollingLogic = new PatrollingLogic(_patrolTime, 5, _expireTime, _testOutputHelper);
+        var idleLogic = new IdleLogic(_testOutputHelper);
+        var rageLogic = new RageLogic(_testOutputHelper);
+        var patrollingLogic = new PatrollingLogic(_patrolTime, _testOutputHelper);
         var toRageLogic = new ToRageLogic(bb);
         var fromRageLogic = new FromRageLogic(bb);
 
@@ -42,14 +39,15 @@ public class ActorStub
         patrollingState.AddTransition(transitionToRage).AddTransition(transitionFromPatrolToIdle);
         rageState.AddTransition(transitionFromRageToPatrol);
 
-        var sensor = new SampleSensor(typeof(ActorStub), "Enemy", GlobalBb);
-        
+        sensor = new SampleSensor(bb, _testOutputHelper);
+
         var fsm = new Graph(idleState);
         var am = new ActionManager();
         AiComponent = new AiComponent(am, fsm, bb, new List<Sensor> { sensor });
         #endregion
     }
-    
+    public SampleSensor sensor { get; set; }
+
     public void Update(float delta)
     {
         AiComponent.Update(delta);

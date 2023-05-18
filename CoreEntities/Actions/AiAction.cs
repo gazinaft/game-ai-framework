@@ -2,15 +2,12 @@ namespace CoreEntities.Actions;
 
 public abstract class AiAction
 {
-    public int Priority { get; protected set;}
-    protected float StartExpireTime { get; }
-    public float ExpireTime { get; set; } 
-
-    protected AiAction(int priority, float expireTime)
-    {
-        Priority = priority;
-        StartExpireTime = expireTime;
-    }
+    public const float DefaultExpireTime = 5000;
+    public const int DefaultPriority = 0;
+    
+    public virtual int Priority { get; } = DefaultPriority;
+    protected virtual float StartExpireTime { get; } = DefaultExpireTime;
+    public float ExpireTime { get; set; }
 
     public void QueueUp()
     {
@@ -18,9 +15,9 @@ public abstract class AiAction
     }
     
     public bool IsComplete { get; protected set; }
-    public bool Interrupt { get; protected set; }
+    public bool Interrupt { get; set; }
 
     public abstract void Start();
-    public abstract void Update(float delta);
+    public abstract Task Update(float delta);
 
 }

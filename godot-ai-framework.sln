@@ -10,7 +10,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeExecution.Test", "CodeE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direction", "Direction\Direction.csproj", "{1ADF89E6-898E-4401-9634-E5718B611E15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Test", "Framework.Test\Framework.Test.csproj", "{8486A4AB-CF2C-47E6-9080-33CD964D45E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Graph.Test", "Framework.Graph.Test\Framework.Graph.Test.csproj", "{8486A4AB-CF2C-47E6-9080-33CD964D45E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.BehaviorTree.Test", "Framework.BehaviorTree.Test\Framework.BehaviorTree.Test.csproj", "{9E759ABD-C2DF-4F30-88DC-13C849F149DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,5 +57,11 @@ Global
 		{8486A4AB-CF2C-47E6-9080-33CD964D45E2}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
 		{8486A4AB-CF2C-47E6-9080-33CD964D45E2}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
 		{8486A4AB-CF2C-47E6-9080-33CD964D45E2}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
+		{9E759ABD-C2DF-4F30-88DC-13C849F149DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E759ABD-C2DF-4F30-88DC-13C849F149DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E759ABD-C2DF-4F30-88DC-13C849F149DF}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E759ABD-C2DF-4F30-88DC-13C849F149DF}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{9E759ABD-C2DF-4F30-88DC-13C849F149DF}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E759ABD-C2DF-4F30-88DC-13C849F149DF}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

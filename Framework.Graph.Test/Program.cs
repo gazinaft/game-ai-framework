@@ -1,4 +1,6 @@
-﻿namespace Framework.Test;
+﻿using System.Runtime.CompilerServices;
+
+namespace Framework.Test;
 
 public static class Program
 {
@@ -10,22 +12,19 @@ public static class Program
     {
     
         var actor = new ActorStub(TestOutputHelper);
-        var globalBb = new Blackboard();
-    
-        actor.GlobalBb = globalBb;
         actor.Start();
         for (int i = 0; i < 100; i++)
         {
             TestOutputHelper.WriteLine("i = " + i);
             if (i % 10 == 0)
             {
-                globalBb.Set("Enemy", new ActorStub());
+                actor.sensor.ActorStub = actor;
                 TestOutputHelper.WriteLine("Set enemy");
             }
     
             if (i % 13 == 0)
             {
-                globalBb.Set("Enemy", null);
+                actor.sensor.ActorStub = null;
                 TestOutputHelper.WriteLine("enemy null");
             }
             actor.Update(Stable60FpsInterval);

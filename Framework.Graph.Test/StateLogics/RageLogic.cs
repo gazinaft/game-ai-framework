@@ -1,7 +1,8 @@
 namespace Framework.Test.StateLogics;
 
-public class RageLogic : StateLogic
-{
+public class RageLogic : StateLogic {
+    public override int Priority { get; } = 5;
+    
     private float _ragetime;
     private ITestOutputHelper _testOutputHelper;
     
@@ -11,14 +12,14 @@ public class RageLogic : StateLogic
         _testOutputHelper.WriteLine("Starting rage");
     }
 
-    public override void Update(float delta)
+    public override async Task Update(float delta)
     {
         _ragetime += delta;
         _testOutputHelper.WriteLine("raging for " + _ragetime);
     }
 
 
-    public RageLogic(int priority, float expireTime, ITestOutputHelper testOutputHelper) : base(priority, expireTime)
+    public RageLogic(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
     }
