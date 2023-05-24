@@ -6,7 +6,7 @@ public class State
 {
     public StateLogic Logic { get; }
 
-    private List<Transition> _edges = new List<Transition>();
+    private readonly List<Transition> _edges = new();
 
     public State AddTransition(Transition tr)
     {

@@ -4,8 +4,8 @@ namespace DecisionMaking.FiniteStateMachine.Transitions;
 
 public class Transition
 {
-    private State _to;
-    private TransitionLogic? _logic;
+    private readonly State _to;
+    private readonly TransitionLogic? _logic;
     public bool IsInterruption { get; }
     
 
