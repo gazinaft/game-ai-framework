@@ -26,7 +26,7 @@ public class Graph : DecisionMaker {
         var nextState = _currentState?.GetNextState();
      
         if (nextState?.Logic == null) 
-            throw new SystemException();
+            throw new NullReferenceException("Next State is null or has null logic");
         
         _currentState = nextState;
         return nextState.Logic;

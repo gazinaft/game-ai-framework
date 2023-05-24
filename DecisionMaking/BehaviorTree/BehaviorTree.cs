@@ -37,7 +37,7 @@ public class BehaviorTree : DecisionMaker {
         _lastAction = task;
         
         if (task is null)
-            throw new SystemException();
+            throw new NullReferenceException("Task is null in Behavior Tree");
 
         return task;
     }
