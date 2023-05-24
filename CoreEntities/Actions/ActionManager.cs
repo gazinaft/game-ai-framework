@@ -5,10 +5,10 @@ public class ActionManager {
     public AiAction? Active { get; private set; }
     private int _priorityCutOff;
 
-    public event Action QueueEmpty;
-    public event Action<AiAction> ActionComplete;
-    public event Action<AiAction> ActionSet;
-    public event Action<AiAction> ActionInterrupted;
+    public event Action? QueueEmpty;
+    public event Action<AiAction>? ActionComplete;
+    public event Action<AiAction>? ActionSet;
+    public event Action<AiAction>? ActionInterrupted;
 
     public ActionManager()
     {
