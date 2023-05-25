@@ -12,7 +12,7 @@ public class AiPositionSensor: Sensor {
     {
     }
     
-    public override void Sense()
+    public override void Sense(float delta)
     {
         _blackboard.Set("Position", AnotherPoint ?? GoToPointLeaf.PointA);
     }

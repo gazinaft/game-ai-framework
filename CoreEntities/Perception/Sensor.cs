@@ -9,5 +9,5 @@ public abstract class Sensor {
         _blackboard = blackboard;
 
     }
-    public abstract void Sense();
+    public abstract void Sense(float delta);
 }

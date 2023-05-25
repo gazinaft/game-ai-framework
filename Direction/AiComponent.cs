@@ -35,18 +35,18 @@ public class AiComponent {
         ActionInterrupted += decisionMaker.OnActionInterrupted;
     }
 
-    private void UpdateSensors()
+    private void UpdateSensors(float delta)
     {
         foreach (var sensor in _sensors)
         {
-            sensor.Sense();
+            sensor.Sense(delta);
         }
     }
 
     public async Task Update(float delta)
     {
         _blackboard.Update(delta);
-        UpdateSensors();
+        UpdateSensors(delta);
 
         var interruption = _decisionMaker.Update();
 

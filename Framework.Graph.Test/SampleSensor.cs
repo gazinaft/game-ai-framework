@@ -8,7 +8,7 @@ public class SampleSensor : Sensor {
         _testOutputHelper = testOutputHelper;
     }
 
-    public override void Sense()
+    public override void Sense(float delta)
     {
         _testOutputHelper.WriteLine(ActorStub?.ToString() ?? "null");
         

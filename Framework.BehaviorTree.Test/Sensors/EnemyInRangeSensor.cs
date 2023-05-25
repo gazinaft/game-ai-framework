@@ -11,7 +11,7 @@ public class EnemyInRangeSensor: Sensor {
     public EnemyInRangeSensor(Blackboard blackboard) : base(blackboard)
     {
     }
-    public override void Sense()
+    public override void Sense(float delta)
     {
         _blackboard.Set("Enemy", Enemy);
     }
