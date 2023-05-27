@@ -26,4 +26,9 @@ public class Selector: TreeTask {
 
         return  null;
     }
+
+    public override string ToString()
+    {
+        return "Selector" + '\n' + _children.Select(x => x.ToString()).Aggregate((x, y) => x + '\n' + y);
+    }
 }

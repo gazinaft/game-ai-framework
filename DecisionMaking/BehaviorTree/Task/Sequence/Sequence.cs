@@ -32,4 +32,10 @@ public class Sequence : TreeTask {
         
         return null;
     }
+
+    public override string ToString()
+    {
+        return "Sequence" + '\n' + _children.Select(x => x.ToString()).Aggregate((x, y) => x + '\n' + y);
+
+    }
 }

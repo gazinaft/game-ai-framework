@@ -53,4 +53,9 @@ public class BehaviorTree : DecisionMaker {
 
         return task;
     }
+
+    public override string ToString()
+    {
+        return "Root: " +  Root;
+    }
 }

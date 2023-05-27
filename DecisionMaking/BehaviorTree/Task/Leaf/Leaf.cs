@@ -18,4 +18,9 @@ public class Leaf : TreeTask {
     {
         return _leafLogic;
     }
+
+    public override string ToString()
+    {
+        return "Leaf";
+    }
 }

@@ -24,4 +24,9 @@ public class Decorator : TreeTask {
 
         return null;
     }
+
+    public override string ToString()
+    {
+        return "Decorator" + '\n' + _child.ToString();
+    }
 }
