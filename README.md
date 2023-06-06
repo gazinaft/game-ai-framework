@@ -8,7 +8,7 @@
 
 ## Project structure
 
-- [`GameAiFramework.CodeExecution`]() - build AI from GUI using reflection. GUI is under development in separate repository
+- [`GameAiFramework.CodeExecution`](GameAiFramework.CodeExecution/CodeExecutionREADME.md) - build AI from GUI using reflection. GUI is under development in separate repository
 - `GameAiFramework.CodeExecution.Test` - unit tests for CodeExecution
 - [`GameAiFramework.CoreEntities`](GameAiFramework.CoreEntities/CoreEntitiesREADME.md) - core entities of 3 layers of AI architecture
 - [`GameAiFramework.DecisionMaking`](GameAiFramework.DecisionMaking/DecisionMakingREADME.md) - implementations of decision making algorithms for the framework. Currently only FSM and BT implemented
