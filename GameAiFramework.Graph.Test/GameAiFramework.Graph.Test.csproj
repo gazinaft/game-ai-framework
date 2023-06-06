@@ -24,8 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DecisionMaking\DecisionMaking.csproj" />
-      <ProjectReference Include="..\Direction\Direction.csproj" />
+      <ProjectReference Include="..\GameAiFramework.DecisionMaking\GameAiFramework.DecisionMaking.csproj" />
+      <ProjectReference Include="..\GameAiFramework.Direction\GameAiFramework.Direction.csproj" />
     </ItemGroup>
 
 </Project>

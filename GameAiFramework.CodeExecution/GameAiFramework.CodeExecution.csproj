@@ -4,10 +4,11 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>CodeExecution</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DecisionMaking\DecisionMaking.csproj" />
+      <ProjectReference Include="..\GameAiFramework.DecisionMaking\GameAiFramework.DecisionMaking.csproj" />
     </ItemGroup>
 
     <ItemGroup>

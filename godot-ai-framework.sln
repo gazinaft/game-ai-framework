@@ -1,21 +1,22 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionMaking", "DecisionMaking\DecisionMaking.csproj", "{FB34C19B-0AF6-497B-9843-EEB425BDD5B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAiFramework.DecisionMaking", "GameAiFramework.DecisionMaking\GameAiFramework.DecisionMaking.csproj", "{FB34C19B-0AF6-497B-9843-EEB425BDD5B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreEntities", "CoreEntities\CoreEntities.csproj", "{45ABD40C-1505-4C36-B72E-047245A629D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAiFramework.CoreEntities", "GameAiFramework.CoreEntities\GameAiFramework.CoreEntities.csproj", "{45ABD40C-1505-4C36-B72E-047245A629D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeExecution", "CodeExecution\CodeExecution.csproj", "{A8477142-B517-42EA-A61C-4E5E8492455C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAiFramework.CodeExecution", "GameAiFramework.CodeExecution\GameAiFramework.CodeExecution.csproj", "{A8477142-B517-42EA-A61C-4E5E8492455C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeExecution.Test", "CodeExecution.Test\CodeExecution.Test.csproj", "{8C5B3801-B8A1-4794-A93F-5AC8CB0CA222}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAiFramework.CodeExecution.Test", "GameAiFramework.CodeExecution.Test\GameAiFramework.CodeExecution.Test.csproj", "{8C5B3801-B8A1-4794-A93F-5AC8CB0CA222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direction", "Direction\Direction.csproj", "{1ADF89E6-898E-4401-9634-E5718B611E15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAiFramework.Direction", "GameAiFramework.Direction\GameAiFramework.Direction.csproj", "{1ADF89E6-898E-4401-9634-E5718B611E15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Graph.Test", "Framework.Graph.Test\Framework.Graph.Test.csproj", "{8486A4AB-CF2C-47E6-9080-33CD964D45E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAiFramework.Graph.Test", "GameAiFramework.Graph.Test\GameAiFramework.Graph.Test.csproj", "{8486A4AB-CF2C-47E6-9080-33CD964D45E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.BehaviorTree.Test", "Framework.BehaviorTree.Test\Framework.BehaviorTree.Test.csproj", "{9E759ABD-C2DF-4F30-88DC-13C849F149DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameAiFramework.BehaviorTree.Test", "GameAiFramework.BehaviorTree.Test\GameAiFramework.BehaviorTree.Test.csproj", "{9E759ABD-C2DF-4F30-88DC-13C849F149DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Release|Any CPU = Release|Any CPU
 	Debug|Any CPU = Debug|Any CPU
 	ExportDebug|Any CPU = ExportDebug|Any CPU
 	ExportRelease|Any CPU = ExportRelease|Any CPU

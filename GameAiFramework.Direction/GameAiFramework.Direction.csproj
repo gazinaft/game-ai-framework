@@ -4,10 +4,11 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Direction</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CoreEntities\CoreEntities.csproj" />
+      <ProjectReference Include="..\GameAiFramework.CoreEntities\GameAiFramework.CoreEntities.csproj" />
     </ItemGroup>
 
 </Project>
