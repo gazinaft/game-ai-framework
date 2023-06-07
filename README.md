@@ -7,6 +7,7 @@
 ![AIArchitecture.png](AIArchitecture.png)
 
 ## Project structure
+All non-test projects posted as Nuget packages and have same naming as listed below
 
 - [`GameAiFramework.CodeExecution`](GameAiFramework.CodeExecution/CodeExecutionREADME.md) - build AI from GUI using reflection. GUI is under development in separate repository
 - `GameAiFramework.CodeExecution.Test` - unit tests for CodeExecution
